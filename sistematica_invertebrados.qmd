@@ -1,0 +1,635 @@
+---
+title: "Principios básicos de la Sistemática"
+subtitle: "Terminología, árboles filogenéticos y su relevancia en Zoología de Invertebrados"
+author: "Sergio Melgar"
+date: today
+date-format: "DD [de] MMMM, YYYY"
+lang: es
+format:
+  revealjs:
+    theme: [default, tema.scss]
+    slide-number: c/t
+    footer: "Sistemática y Filogenia — Invertebrados"
+    transition: fade
+    background-transition: fade
+    controls: true
+    progress: true
+    center: false
+    embed-resources: true
+    chalkboard: false
+    code-fold: false
+    fig-align: center
+    fig-format: png
+    fig-dpi: 150
+execute:
+  echo: false
+  warning: false
+  message: false
+  freeze: auto
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(ape)
+
+# Paleta de colores institucional del curso
+col_dark   <- "#0B4F6C"
+col_teal   <- "#0B7285"
+col_teal2  <- "#4FB3BF"
+col_coral  <- "#E0883A"
+col_red    <- "#C0392B"
+col_green  <- "#3F8F5A"
+col_gray   <- "#6B8A94"
+col_bg     <- "#FBFCFC"
+
+# --- funciones auxiliares reutilizadas en varios esquemas ---
+
+# Lista de descendientes (tips) de cada nodo de un árbol ape
+tips_desc <- function(tree){
+  n <- length(tree$tip.label)
+  desc <- vector("list", max(tree$edge))
+  for(i in 1:n) desc[[i]] <- i
+  po <- tree$edge[postorder(tree), ]
+  for(k in 1:nrow(po)){
+    parent <- po[k,1]; child <- po[k,2]
+    desc[[parent]] <- unique(c(desc[[parent]], desc[[child]]))
+  }
+  desc
+}
+
+# Dibuja un árbol resaltando un subconjunto de puntas (para mono/para/polifilia)
+plot_grouping <- function(tree, target_tips, titulo, col_main, col_dim="grey75", cex.lab=1.25){
+  d <- tips_desc(tree)
+  n <- length(tree$tip.label)
+  target_idx <- match(target_tips, tree$tip.label)
+  ecol <- rep(col_dim, nrow(tree$edge))
+  for(e in 1:nrow(tree$edge)){
+    child <- tree$edge[e,2]
+    if(child <= n){
+      if(child %in% target_idx) ecol[e] <- col_main
+    } else {
+      if(all(d[[child]] %in% target_idx)) ecol[e] <- col_main
+    }
+  }
+  tcol <- ifelse(1:n %in% target_idx, col_main, col_dim)
+  plot(tree, edge.width=5, edge.color=ecol, tip.color=tcol, cex=cex.lab,
+       font=ifelse(1:n %in% target_idx,2,1), no.margin=FALSE, label.offset=0.05)
+  title(titulo, col.main=col_main, cex.main=1.25, font.main=2)
+}
+```
+
+# Introducción
+
+## Objetivos de la clase {.smaller}
+
+Al finalizar esta sesión, el estudiante será capaz de:
+
+::: incremental
+-   Definir **sistemática** y **taxonomía** y diferenciarlas con claridad.
+-   Manejar la **terminología esencial** de la sistemática biológica.
+-   Interpretar correctamente un **árbol filogenético**: sus partes y su lógica.
+-   Distinguir entre grupos **monofiléticos, parafiléticos y polifiléticos**.
+-   Comprender por qué la filogenia **reorganizó** la clasificación clásica de los invertebrados.
+-   Argumentar la **relevancia** del enfoque filogenético en el estudio de los invertebrados.
+:::
+
+## ¿Por qué empezar por aquí? {background-color="#0B4F6C"}
+
+::: {style="color:white; font-size:1.1em;"}
+Los invertebrados representan más del **95% de las especies animales** descritas.
+
+Sin un marco sistemático y filogenético claro, es imposible:
+
+-   comunicar hallazgos de forma inequívoca,
+-   comparar resultados entre investigadores,
+-   ni entender la **historia evolutiva** de este grupo tan diverso.
+:::
+
+# Sistemática y taxonomía
+
+## Sistemática: definición
+
+::: caja-termino
+**Sistemática** es la disciplina biológica que estudia la **diversidad de los organismos** y las **relaciones evolutivas (de parentesco)** entre ellos, para ordenarlas en un sistema de clasificación.
+:::
+
+-   Integra evidencia morfológica, molecular, ecológica y del desarrollo.
+-   Su producto final es un **sistema de clasificación que refleja la evolución**.
+-   Es la disciplina "paraguas" que incluye a la taxonomía.
+
+## Términos que suelen confundirse
+
+::::::: columns
+:::: {.column width="50%"}
+::: {.caja-termino style="height:280px;"}
+**Sistemática**
+
+Estudia el parentesco evolutivo entre organismos y construye la clasificación.
+:::
+::::
+
+:::: {.column width="50%"}
+::: {.caja-termino style="height:280px;"}
+**Taxonomía**
+
+Teoría y práctica de **describir, nombrar y ordenar** organismos en taxones.
+:::
+::::
+:::::::
+
+::: fragment
+La taxonomía es una **herramienta** de la sistemática; la clasificación es su **producto**.
+:::
+
+## Breve contexto histórico
+
+::: incremental
+-   **Carl Linneo (S. XVIII):** sistema jerárquico y nomenclatura binomial — base de la taxonomía moderna.
+-   **Charles Darwin (1859):** la clasificación debía reflejar **ascendencia común**, no solo similitud.
+-   **Willi Hennig (1950–60s):** funda la **sistemática filogenética (cladística)** — clasificar según genealogía estricta.
+-   **Últimas 3 décadas:** datos **moleculares** revolucionan la filogenia de invertebrados (p. ej. reorganización de Bilateria).
+:::
+
+## ¿Por qué importa tanto en invertebrados?
+
+-   Es el grupo animal con **mayor diversidad de planes corporales** (Bauplan).
+-   Muchos caracteres morfológicos son producto de **convergencia evolutiva** → fácil clasificar mal si solo se usa morfología superficial.
+-   La sistemática ordena ese universo de formas en un marco **comprobable y predictivo**.
+
+::: caja-clave
+Sin sistemática rigurosa, términos como "gusano" o "concha" agrupan organismos que **no están emparentados**.
+:::
+
+# Terminología esencial
+
+## Taxón y categoría taxonómica
+
+::: caja-termino
+**Taxón** (pl. *taxa*): unidad o grupo concreto de organismos reconocido formalmente en una clasificación (p. ej. *Mollusca*, *Octopus vulgaris*).
+:::
+
+::: caja-termino
+**Categoría taxonómica (rango)**: el **nivel jerárquico** que ocupa un taxón (p. ej. Filo, Clase, Género).
+:::
+
+::: fragment
+*Mollusca* es un **taxón** que ocupa la **categoría** de Filo.
+:::
+
+## La jerarquía linneana
+
+```{r}
+#| label: fig-jerarquia
+#| fig-width: 8.5
+#| fig-height: 5.6
+#| fig-cap: "Categorías taxonómicas principales, de mayor a menor inclusividad."
+
+niveles <- c("Reino","Filo","Clase","Orden","Familia","Género","Especie")
+n <- length(niveles)
+par(mar=c(0.5,0.5,0.5,0.5))
+plot(0,0,type="n", xlim=c(0,10), ylim=c(0.3,n+0.7), axes=FALSE, xlab="", ylab="")
+widths <- seq(8.6, 2.6, length.out=n)
+cols <- colorRampPalette(c(col_dark, col_teal2))(n)
+for(i in 1:n){
+  y <- n - i + 1
+  w <- widths[i]
+  rect(5-w/2, y-0.36, 5+w/2, y+0.36, col=cols[i], border="white", lwd=2)
+  text(5, y, niveles[i], col="white", font=2, cex=1.25)
+}
+```
+
+## Ejemplo aplicado: el pulpo común
+
+```{r}
+#| label: fig-ejemplo-taxon
+#| fig-width: 8.5
+#| fig-height: 5.6
+#| fig-cap: "Jerarquía taxonómica completa de Octopus vulgaris."
+
+tax <- data.frame(
+  nivel = c("Reino","Filo","Clase","Orden","Familia","Género","Especie"),
+  valor = c("Animalia","Mollusca","Cephalopoda","Octopoda","Octopodidae","Octopus","O. vulgaris")
+)
+par(mar=c(0.3,0.3,0.3,0.3))
+plot(0,0,type="n", xlim=c(0,10), ylim=c(0.2,7.8), axes=FALSE, xlab="", ylab="")
+for(i in 1:7){
+  y <- 8 - i
+  rect(0.2,y-0.36,4.3,y+0.36, col=col_dark, border=NA)
+  text(2.25,y,tax$nivel[i], col="white", font=2, cex=1.05)
+  rect(4.5,y-0.36,9.6,y+0.36, col=col_teal2, border=NA)
+  text(7.05,y,tax$valor[i], col="white", font=3, cex=1.05)
+  if(i<7) arrows(2.25,y-0.36,2.25,y-0.66, length=0.09, col=col_gray, lwd=2.5)
+}
+```
+
+## Nomenclatura binomial
+
+::: caja-termino
+Todo **nombre científico de especie** se compone de dos partes en latín (o latinizadas):
+
+**Género** + **epíteto específico**, siempre en *cursiva*.
+:::
+
+-   Ejemplo: ***Octopus vulgaris*** Cuvier, 1797
+-   El **género** siempre inicia con mayúscula; el epíteto, en minúscula.
+-   Regida internacionalmente por el **Código Internacional de Nomenclatura Zoológica (ICZN)** para animales.
+
+::: caja-clave
+El nombre científico evita la ambigüedad de los nombres comunes, que cambian entre regiones e idiomas.
+:::
+
+## El concepto de especie
+
+Existen varios criterios; en zoología de invertebrados suelen combinarse:
+
+::: incremental
+-   **Concepto biológico:** poblaciones que se reproducen entre sí y producen descendencia fértil.
+-   **Concepto morfológico:** diferencias diagnósticas de forma y estructura.
+-   **Concepto filogenético:** el linaje más pequeño diagnosticable con un ancestro común exclusivo.
+:::
+
+::: {.fragment .caja-clave}
+En invertebrados, reproducción asexual, especies crípticas y escaso registro conductual hacen que el concepto **filogenético/morfológico** sea frecuentemente el más práctico.
+:::
+
+# De la clasificación a la filogenia
+
+## ¿Qué es la filogenia?
+
+::: caja-termino
+**Filogenia**: la historia evolutiva de las relaciones de parentesco entre un conjunto de organismos o linajes.
+:::
+
+-   Se representa gráficamente mediante un **árbol filogenético**.
+-   Es una **hipótesis científica**, contrastable y revisable con nueva evidencia.
+-   Hoy integra datos morfológicos **y** moleculares (ADN, ARN, genomas completos).
+
+## ¿Qué es un árbol filogenético?
+
+::: caja-termino
+Diagrama ramificado que representa las **hipótesis de parentesco evolutivo** entre taxones, a partir de un ancestro común.
+:::
+
+Permite responder preguntas como:
+
+-   ¿Qué grupos están más emparentados entre sí?
+-   ¿En qué orden aparecieron ciertos caracteres?
+-   ¿Es válida una clasificación tradicional a la luz de la evolución?
+
+## Anatomía de un árbol filogenético
+
+```{r}
+#| label: fig-anatomia
+#| fig-width: 9
+#| fig-height: 5.6
+#| fig-cap: "Elementos básicos de un árbol filogenético."
+
+tree <- read.tree(text="((Taxon_A,Taxon_B),(Taxon_C,(Taxon_D,Taxon_E)));")
+par(mar=c(0.5,0.5,0.5,0.5))
+plot(tree, edge.width=4, edge.color=col_dark, tip.color=col_dark, cex=1.3,
+     label.offset=0.05, no.margin=FALSE, x.lim=c(0,4.6))
+nodelabels(pch=19, col=col_coral, cex=2)
+tiplabels(pch=19, col=col_teal, cex=1.6)
+rootedge <- 0.35
+lastPP <- get("last_plot.phylo", envir = .PlotPhyloEnv)
+text(0.2, 2.5, "Raíz", col=col_red, font=2, cex=1.5, pos=3)
+text(2.0, 1.2, "Nodo (ancestro hipotético)", col=col_coral, font=2, cex=1.5, pos=1)
+segments(2.5,1.2,3,1.5, col=col_coral, lty=2)
+text(3.7, 4.7, "Punta / OTU", col=col_teal, font=2, cex=1.5, pos=4, xpd=TRUE)
+segments(2.3,4.1,2.6,4.5, col=col_gray, lty=2)
+text(2.25,4.1,"Rama", col=col_gray, font=2, cex=01.5, pos=1)
+```
+
+## Vocabulario del árbol {.smaller}
+
+::: incremental
+-   **Raíz:** el ancestro común más antiguo representado en el árbol.
+-   **Nodo (interno):** punto de bifurcación → representa un **ancestro hipotético común**.
+-   **Rama (arista):** conecta dos nodos y representa un **linaje** a través del tiempo.
+-   **Punta / hoja / OTU** (*Operational Taxonomic Unit*): los taxones actuales, en los extremos.
+-   **Clado:** un nodo **y todos** sus descendientes.
+-   **Topología:** el patrón de ramificación — la información de parentesco real del árbol.
+:::
+
+```{r}
+#| label: fig-anatomia2
+#| fig-width: 9
+#| fig-height: 4
+#| fig-cap: "Elementos básicos de un árbol filogenético."
+
+tree <- read.tree(text="((Taxon_A,Taxon_B),(Taxon_C,(Taxon_D,Taxon_E)));")
+par(mar=c(0.5,0.5,0.5,0.5))
+plot(tree, edge.width=4, edge.color=col_dark, tip.color=col_dark, cex=1.3,
+     label.offset=0.05, no.margin=FALSE, x.lim=c(0,4.6))
+nodelabels(pch=19, col=col_coral, cex=2)
+tiplabels(pch=19, col=col_teal, cex=1.6)
+rootedge <- 0.35
+lastPP <- get("last_plot.phylo", envir = .PlotPhyloEnv)
+text(0.2, 2.5, "Raíz", col=col_red, font=2, cex=1.5, pos=3)
+text(2.0, 1.2, "Nodo (ancestro hipotético)", col=col_coral, font=2, cex=1.5, pos=1)
+segments(2.5,1.2,3,1.5, col=col_coral, lty=2)
+text(3.7, 4.7, "Punta / OTU", col=col_teal, font=2, cex=1.5, pos=4, xpd=TRUE)
+segments(2.3,4.1,2.6,4.5, col=col_gray, lty=2)
+text(2.25,4.1,"Rama", col=col_gray, font=2, cex=01.5, pos=1)
+```
+
+## Un detalle clave para leer árboles
+
+::: caja-clave
+Un árbol se puede **rotar libremente** en sus nodos sin cambiar su significado: **el orden de las puntas no indica parentesco**, solo la **topología** (los nodos que comparten) lo indica.
+:::
+
+```{r}
+#| label: fig-rotacion
+#| fig-width: 9
+#| fig-height: 4.2
+#| fig-cap: "Dos representaciones equivalentes del mismo árbol."
+
+par(mfrow=c(1,2), mar=c(1,1,2,1))
+t1 <- read.tree(text="((A,B),(C,D));")
+plot(t1, edge.width=4, edge.color=col_teal, cex=1.3, no.margin=FALSE)
+title("Versión 1", col.main=col_dark)
+t2 <- read.tree(text="((D,C),(B,A));")
+plot(t2, edge.width=4, edge.color=col_teal, cex=1.3, no.margin=FALSE)
+title("Versión 2 (misma topología)", col.main=col_dark)
+```
+
+## Grupo hermano y grupo externo
+
+```{r}
+#| label: fig-outgroup
+#| fig-width: 9
+#| fig-height: 5.2
+#| fig-cap: "El grupo externo (outgroup) permite enraizar el árbol y polarizar los caracteres."
+
+tree <- read.tree(text="(Outgroup,(Taxon_A,(Taxon_B,Taxon_C)));")
+n <- length(tree$tip.label)
+tcol <- c(col_red, col_teal, col_teal, col_teal)
+par(mar=c(0.5,0.5,0.5,0.5))
+plot(tree, edge.width=4, edge.color=col_dark, tip.color=tcol, cex=1.3,
+     font=2, label.offset=0.05, no.margin=FALSE)
+```
+
+::: incremental
+-   **Grupo interno (*ingroup*):** el conjunto de taxones que realmente interesa estudiar.
+-   **Grupo externo (*outgroup*):** un taxón **fuera** del grupo de interés, usado para **enraizar** el árbol.
+-   **Grupos hermanos:** dos linajes que son el pariente más cercano entre sí (comparten un nodo exclusivo).
+:::
+
+# Monofilia, parafilia y polifilia
+
+## Por qué esta distinción es crucial
+
+::: caja-clave
+La sistemática filogenética moderna solo acepta como grupos válidos (naturales) a los **grupos monofiléticos (clados)**.
+:::
+
+Esto tuvo un impacto directo en la zoología de invertebrados:
+
+::: fragment
+**"Invertebrata"** (todos los animales sin columna vertebral) **no es un clado**: es un grupo definido por la *ausencia* de un carácter, y **excluye** a un grupo de descendientes (los vertebrados) del mismo ancestro común de Animalia.
+:::
+
+## Tres tipos de agrupamiento
+
+```{r}
+#| label: fig-mono-para-poli
+#| fig-width: 11.5
+#| fig-height: 4.8
+#| fig-cap: "Comparación entre grupo monofilético, parafilético y polifilético."
+
+newick5 <- "(Porifera,(Cnidaria,((Mollusca,Arthropoda),Chordata)));"
+t5 <- read.tree(text=newick5)
+
+par(mfrow=c(1,3), mar=c(1,0.5,3,0.5))
+plot_grouping(t5, c("Mollusca","Arthropoda"),
+              "Monofilético", col_green, cex.lab=1.05)
+plot_grouping(t5, c("Porifera","Cnidaria","Mollusca","Arthropoda"),
+              "Parafilético", col_coral, cex.lab=1.05)
+plot_grouping(t5, c("Cnidaria","Chordata"),
+              "Polifilético", col_red, cex.lab=1.05)
+```
+
+## Definiciones precisas {.smaller}
+
+::: caja-termino
+**Monofilético (clado):** un ancestro común **+ TODOS** sus descendientes. ✔ Grupo natural válido.
+:::
+
+::: caja-termino
+**Parafilético:** un ancestro común + **algunos** de sus descendientes (excluye a uno o más subgrupos). Ejemplo: *"Invertebrata"*, *"Reptilia"* clásica (excluye a las aves).
+:::
+
+::: caja-termino
+**Polifilético:** grupo que **no incluye** al ancestro común más reciente de todos sus miembros; suele basarse en similitud por **convergencia**, no por parentesco real.
+:::
+
+# Homología, caracteres y construcción de árboles
+
+## Homología vs. analogía
+
+::::::: columns
+:::: {.column width="50%"}
+::: {.caja-termino style="height:220px;"}
+**Homología**
+
+Semejanza por **ascendencia común**. Ej.: el plan corporal segmentado de anélidos y artrópodos (con matices).
+:::
+::::
+
+:::: {.column width="50%"}
+::: {.caja-termino style="height:220px;"}
+**Analogía (convergencia)**
+
+Semejanza por **función similar**, sin ancestro común reciente. Ej.: los ojos tipo cámara del pulpo y de los vertebrados.
+:::
+::::
+:::::::
+
+::: {.fragment .caja-clave}
+Solo la **homología** aporta información válida para reconstruir filogenias.
+:::
+
+## Tipos de caracteres homólogos
+
+::: incremental
+-   **Plesiomorfía:** estado **ancestral** de un carácter (compartido con el grupo externo).
+-   **Apomorfía:** estado **derivado** (nuevo) de un carácter.
+-   **Sinapomorfía:** apomorfía **compartida** por dos o más taxones → evidencia de que forman un clado.
+-   **Autapomorfía:** apomorfía exclusiva de **un solo** taxón (útil para diagnosticarlo, no para agrupar).
+:::
+
+## Mapeo de caracteres en el árbol
+
+```{r}
+#| label: fig-caracteres
+#| fig-width: 9
+#| fig-height: 5.6
+#| fig-cap: "Las sinapomorfías (cuadros) marcan el origen de clados; la autapomorfía (rombo) es exclusiva de una punta."
+
+tree <- read.tree(text="(Outgroup,(Taxon_A,(Taxon_B,Taxon_C)));")
+par(mar=c(0.5,0.5,0.5,0.5))
+plot(tree, edge.width=4, edge.color=col_dark, tip.color=col_dark, cex=1.3,
+     font=2, label.offset=0.05, no.margin=FALSE, x.lim=c(0,4.2))
+
+lastPP <- get("last_plot.phylo", envir = .PlotPhyloEnv)
+xx <- lastPP$xx; yy <- lastPP$yy
+
+nodo_ingroup <- getMRCA(tree, c("Taxon_A","Taxon_B","Taxon_C"))
+nodo_BC      <- getMRCA(tree, c("Taxon_B","Taxon_C"))
+tip_C        <- match("Taxon_C", tree$tip.label)
+
+# sinapomorfia 1: en el nodo que une a A,B,C (carácter compartido por el ingroup, ausente en el outgroup)
+points(xx[nodo_ingroup], yy[nodo_ingroup], pch=22, bg=col_coral, cex=2.6, col="white")
+text(xx[nodo_ingroup], yy[nodo_ingroup], "S1", cex=0.65, font=2, col="white")
+
+# sinapomorfia 2: en el nodo que une a B y C
+points(xx[nodo_BC], yy[nodo_BC], pch=22, bg=col_teal, cex=2.6, col="white")
+text(xx[nodo_BC], yy[nodo_BC], "S2", cex=0.65, font=2, col="white")
+
+# autapomorfia: en la rama terminal de C (exclusiva de C)
+points((xx[tip_C]+xx[nodo_BC])/2, yy[tip_C], pch=23, bg=col_red, cex=2.4, col="white")
+text((xx[tip_C]+xx[nodo_BC])/2, yy[tip_C], "A", cex=0.65, font=2, col="white")
+```
+
+## ¿Cómo se construyen los árboles?
+
+::: incremental
+-   **Datos morfológicos:** caracteres anatómicos, del desarrollo, ultraestructurales.
+-   **Datos moleculares:** secuencias de ADN/ARN (p. ej. 18S rRNA, COI — *código de barras genético*).
+-   **Métodos de inferencia:**
+    -   **Parsimonia** (cladística clásica): el árbol que exige el **menor número de cambios**.
+    -   **Máxima verosimilitud (Maximum Likelihood)**.
+    -   **Inferencia bayesiana**.
+:::
+
+::: {.fragment .caja-clave}
+Hoy la práctica más robusta combina evidencia **morfológica + molecular**: la llamada **taxonomía integrativa**.
+:::
+
+# La filogenia transformó la clasificación de invertebrados
+
+## La revolución molecular en Bilateria
+
+Los datos moleculares (fines de los 90) reorganizaron por completo el árbol de los animales bilaterales:
+
+```{r}
+#| label: fig-bilateria
+#| fig-width: 10
+#| fig-height: 6
+#| fig-cap: "Filogenia simplificada de los principales linajes animales (basada en evidencia molecular)."
+
+newick <- "(Porifera,(Cnidaria,(((Nematoda,Arthropoda),(Platyhelminthes,(Annelida,Mollusca))),(Echinodermata,Chordata))));"
+tr <- read.tree(text=newick)
+par(mar=c(0.5,0.5,0.5,11))
+plot(tr, edge.width=4, edge.color=col_dark, tip.color=col_dark, cex=1.15,
+     label.offset=0.03, no.margin=FALSE)
+
+lastPP <- get("last_plot.phylo", envir = .PlotPhyloEnv)
+xx <- lastPP$xx; yy <- lastPP$yy
+
+nodo_ecdysozoa     <- getMRCA(tr, c("Nematoda","Arthropoda"))
+nodo_lofotrocozoa  <- getMRCA(tr, c("Platyhelminthes","Annelida","Mollusca"))
+nodo_protostomia   <- getMRCA(tr, c("Nematoda","Arthropoda","Platyhelminthes","Annelida","Mollusca"))
+nodo_deuterostomia <- getMRCA(tr, c("Echinodermata","Chordata"))
+
+tips_prot <- match(c("Nematoda","Arthropoda","Platyhelminthes","Annelida","Mollusca"), tr$tip.label)
+segments(xx[nodo_protostomia]-0.12, min(yy[tips_prot])-0.3, xx[nodo_protostomia]-0.12, max(yy[tips_prot])+0.3, col=col_coral, lwd=3)
+text(xx[nodo_protostomia]-0.2, mean(range(yy[tips_prot]))+0.2, "Protostomia", srt=90, col=col_coral, font=2, cex=0.9, pos=3)
+
+points(xx[nodo_ecdysozoa], yy[nodo_ecdysozoa], pch=19, col=col_teal, cex=1.6)
+text(xx[nodo_ecdysozoa], yy[nodo_ecdysozoa]+.15, "Ecdysozoa", col=col_teal, font=2, cex=0.85, pos=2, xpd=TRUE)
+
+points(xx[nodo_lofotrocozoa], yy[nodo_lofotrocozoa], pch=19, col=col_green, cex=1.6)
+text(xx[nodo_lofotrocozoa], yy[nodo_lofotrocozoa]+0.15, "Lophotrochozoa", col=col_green, font=2, cex=0.85, pos=2, xpd=TRUE)
+
+points(xx[nodo_deuterostomia], yy[nodo_deuterostomia], pch=19, col=col_red, cex=1.6)
+text(xx[nodo_deuterostomia], yy[nodo_deuterostomia]+0.15, "Deuterostomia", col=col_red, font=2, cex=0.85, pos=2, xpd=TRUE)
+```
+
+## Lo que este árbol cambió {.smaller}
+
+::: incremental
+-   Se abandona el criterio antiguo (celoma, segmentación) como único ordenador y se reconocen **tres grandes clados** dentro de Protostomia y Deuterostomia:
+    -   **Ecdysozoa:** animales que **mudan una cutícula** (Artrópodos, Nematodos, entre otros).
+    -   **Lophotrochozoa:** incluye moluscos, anélidos, platelmintos, entre otros — unidos por evidencia molecular más que morfológica evidente.
+    -   **Deuterostomia:** equinodermos, cordados y grupos afines.
+-   **Artrópodos y nematodos**, muy distintos morfológicamente, resultaron **más emparentados entre sí** que con anélidos (antes agrupados por tener celoma/segmentación).
+-   Esto demuestra el poder — y la necesidad — del enfoque filogenético frente a la sola similitud morfológica.
+:::
+
+```{r}
+#| label: fig-bilateria2
+#| fig-width: 10
+#| fig-height: 4
+#| fig-cap: "Filogenia simplificada de los principales linajes animales (basada en evidencia molecular)."
+
+plot(tr, edge.width=4, edge.color=col_dark, tip.color=col_dark, cex=1.15,
+     label.offset=0.03, no.margin=FALSE)
+
+lastPP <- get("last_plot.phylo", envir = .PlotPhyloEnv)
+xx <- lastPP$xx; yy <- lastPP$yy
+
+nodo_ecdysozoa     <- getMRCA(tr, c("Nematoda","Arthropoda"))
+nodo_lofotrocozoa  <- getMRCA(tr, c("Platyhelminthes","Annelida","Mollusca"))
+nodo_protostomia   <- getMRCA(tr, c("Nematoda","Arthropoda","Platyhelminthes","Annelida","Mollusca"))
+nodo_deuterostomia <- getMRCA(tr, c("Echinodermata","Chordata"))
+
+tips_prot <- match(c("Nematoda","Arthropoda","Platyhelminthes","Annelida","Mollusca"), tr$tip.label)
+segments(xx[nodo_protostomia]-0.12, min(yy[tips_prot])-0.3, xx[nodo_protostomia]-0.12, max(yy[tips_prot])+0.3, col=col_coral, lwd=3)
+text(xx[nodo_protostomia]-0.2, mean(range(yy[tips_prot]))+0.2, "Protostomia", srt=90, col=col_coral, font=2, cex=0.9, pos=3)
+
+points(xx[nodo_ecdysozoa], yy[nodo_ecdysozoa], pch=19, col=col_teal, cex=1.6)
+text(xx[nodo_ecdysozoa], yy[nodo_ecdysozoa]+.15, "Ecdysozoa", col=col_teal, font=2, cex=0.85, pos=2, xpd=TRUE)
+
+points(xx[nodo_lofotrocozoa], yy[nodo_lofotrocozoa], pch=19, col=col_green, cex=1.6)
+text(xx[nodo_lofotrocozoa], yy[nodo_lofotrocozoa]+0.15, "Lophotrochozoa", col=col_green, font=2, cex=0.85, pos=2, xpd=TRUE)
+
+points(xx[nodo_deuterostomia], yy[nodo_deuterostomia], pch=19, col=col_red, cex=1.6)
+text(xx[nodo_deuterostomia], yy[nodo_deuterostomia]+0.15, "Deuterostomia", col=col_red, font=2, cex=0.85, pos=2, xpd=TRUE)
+```
+
+# Relevancia del enfoque filogenético
+
+## ¿Por qué es indispensable en invertebrados?
+
+::: incremental
+-   **Orienta la taxonomía:** permite proponer clasificaciones que reflejan la evolución real, no solo similitud superficial.
+-   **Detecta especies crípticas:** organismos morfológicamente idénticos pero genéticamente distintos (frecuente en invertebrados).
+-   **Guía la conservación:** prioriza linajes evolutivos únicos, no solo especies aisladas.
+-   **Permite reconstruir la evolución de caracteres:** ¿cuándo apareció la metamería? ¿cuántas veces evolucionó el parasitismo?
+-   **Sustenta la biogeografía histórica:** de dónde y cómo se dispersaron los linajes.
+-   **Es la base del *DNA barcoding*** para identificación rápida de especies (uso de COI, 18S).
+:::
+
+## Ejemplo de aplicación práctica
+
+::: caja-clave
+Estudios filogenéticos moleculares han revelado que muchas "especies" morfológicamente uniformes de invertebrados marinos y de agua dulce son en realidad **complejos de especies crípticas**, con implicancias directas para la conservación y el manejo pesquero.
+:::
+
+-   La filogenia permite delimitar unidades evolutivas reales para la toma de decisiones.
+-   Sin este marco, se podrían subestimar — o sobrestimar — los niveles reales de biodiversidad.
+
+# Síntesis
+
+## Ideas clave de la clase {.smaller}
+
+::: incremental
+1.  La **sistemática** estudia el parentesco evolutivo; la **taxonomía** describe y nombra.
+2.  La **nomenclatura binomial** y el ICZN estandarizan los nombres científicos.
+3.  Un **árbol filogenético** es una hipótesis de parentesco, con raíz, nodos, ramas, puntas y clados.
+4.  Solo los grupos **monofiléticos** son taxonómicamente válidos bajo el enfoque filogenético moderno.
+5.  La distinción entre homología y analogía es esencial para no confundir evidencia evolutiva real.
+6.  Los datos moleculares **reorganizaron radicalmente** la clasificación de los invertebrados (Ecdysozoa / Lophotrochozoa). <https://pmc.ncbi.nlm.nih.gov/articles/PMC2614232/>
+7.  La filogenia es hoy **indispensable** para la taxonomía, la conservación y el estudio evolutivo de los invertebrados.
+:::
+
+
+## ¡Gracias! {.center background-color="#0B4F6C"}
+
+::: {style="color:white; text-align:center; font-size:1.2em;"}
+Preguntas y discusión
+:::
