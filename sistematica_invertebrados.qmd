@@ -511,7 +511,7 @@ Hoy la práctica más robusta combina evidencia **morfológica + molecular**: la
 
 ## Genes homólogos, parálogos y ortólogos
 
-[![Genes homólogos, parálogos y ortólogos](https://upload.wikimedia.org/wikipedia/commons/3/32/Ortholog_paralog_analog_examples-ES.svg){fig-alt="Genes homólogos, parálogos y ortólogos" fig-align="center"}](https://commons.wikimedia.org/wiki/File:Ortholog_paralog_analog_examples-ES.svg)
+[![Genes homólogos, parálogos y ortólogos, los ortólogos son los que sirven para filogenia](https://upload.wikimedia.org/wikipedia/commons/3/32/Ortholog_paralog_analog_examples-ES.svg){fig-alt="Genes homólogos, parálogos y ortólogos" fig-align="center"}](https://commons.wikimedia.org/wiki/File:Ortholog_paralog_analog_examples-ES.svg)
 
 # La filogenia transformó la clasificación de invertebrados
 
