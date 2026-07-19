@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="sistematica_invertebrados_files/libs/clipboard/clipboard.min.js"></script>
+<script src="sistematica_invertebrados_files/libs/quarto-html/tabby.min.js"></script>
+<script src="sistematica_invertebrados_files/libs/quarto-html/popper.min.js"></script>
+<script src="sistematica_invertebrados_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="sistematica_invertebrados_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="sistematica_invertebrados_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="sistematica_invertebrados_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.33">
+
+  <meta name="author" content="Sergio Melgar">
+  <title>Principios básicos de la Sistemática</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="sistematica_invertebrados_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="sistematica_invertebrados_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="sistematica_invertebrados_files/libs/revealjs/dist/theme/quarto-df6d720e4a283a9809c860c332f3fb09.css">
+  <link href="sistematica_invertebrados_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="sistematica_invertebrados_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="sistematica_invertebrados_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="sistematica_invertebrados_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="sistematica_invertebrados_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="sistematica_invertebrados_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Principios básicos de la Sistemática</h1>
+  <p class="subtitle">Terminología, árboles filogenéticos y su relevancia en Zoología de Invertebrados</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Sergio Melgar 
+</div>
+</div>
+</div>
+
+  <p class="date">20 de julio, 2026</p>
+</section>
+<section>
+<section id="introducción" class="title-slide slide level1 center">
+<h1>Introducción</h1>
+
+</section>
+<section id="objetivos-de-la-clase" class="slide level2 smaller">
+<h2>Objetivos de la clase</h2>
+<p>Al finalizar esta sesión, el estudiante será capaz de:</p>
+<ul>
+<li class="fragment">Definir <strong>sistemática</strong> y <strong>taxonomía</strong> y diferenciarlas con claridad.</li>
+<li class="fragment">Manejar la <strong>terminología esencial</strong> de la sistemática biológica.</li>
+<li class="fragment">Interpretar correctamente un <strong>árbol filogenético</strong>: sus partes y su lógica.</li>
+<li class="fragment">Distinguir entre grupos <strong>monofiléticos, parafiléticos y polifiléticos</strong>.</li>
+<li class="fragment">Comprender por qué la filogenia <strong>reorganizó</strong> la clasificación clásica de los invertebrados.</li>
+<li class="fragment">Argumentar la <strong>relevancia</strong> del enfoque filogenético en el estudio de los invertebrados.</li>
+</ul>
+</section>
+<section id="por-qué-empezar-por-aquí" class="slide level2" data-background-color="#0B4F6C">
+<h2>¿Por qué empezar por aquí?</h2>
+<div style="color:white; font-size:1.1em;">
+<p>Los invertebrados representan más del <strong>95% de las especies animales</strong> descritas.</p>
+<p>Sin un marco sistemático y filogenético claro, es imposible:</p>
+<ul>
+<li>comunicar hallazgos de forma inequívoca,</li>
+<li>comparar resultados entre investigadores,</li>
+<li>ni entender la <strong>historia evolutiva</strong> de este grupo tan diverso.</li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="sistemática-y-taxonomía" class="title-slide slide level1 center">
+<h1>Sistemática y taxonomía</h1>
+
+</section>
+<section id="sistemática-definición" class="slide level2">
+<h2>Sistemática: definición</h2>
+<div class="caja-termino">
+<p><strong>Sistemática</strong> es la disciplina biológica que estudia la <strong>diversidad de los organismos</strong> y las <strong>relaciones evolutivas (de parentesco)</strong> entre ellos, para ordenarlas en un sistema de clasificación.</p>
+</div>
+<ul>
+<li>Integra evidencia morfológica, molecular, ecológica y del desarrollo.</li>
+<li>Su producto final es un <strong>sistema de clasificación que refleja la evolución</strong>.</li>
+<li>Es la disciplina “paraguas” que incluye a la taxonomía.</li>
+</ul>
+</section>
+<section id="términos-que-suelen-confundirse" class="slide level2">
+<h2>Términos que suelen confundirse</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="caja-termino" style="height:280px;">
+<p><strong>Sistemática</strong></p>
+<p>Estudia el parentesco evolutivo entre organismos y construye la clasificación.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="caja-termino" style="height:280px;">
+<p><strong>Taxonomía</strong></p>
+<p>Teoría y práctica de <strong>describir, nombrar y ordenar</strong> organismos en taxones.</p>
+</div>
+</div></div>
+<div class="fragment">
+<p>La taxonomía es una <strong>herramienta</strong> de la sistemática; la clasificación es su <strong>producto</strong>.</p>
+</div>
+</section>
+<section id="breve-contexto-histórico" class="slide level2">
+<h2>Breve contexto histórico</h2>
+<ul>
+<li class="fragment"><strong>Carl Linneo (S. XVIII):</strong> sistema jerárquico y nomenclatura binomial — base de la taxonomía moderna.</li>
+<li class="fragment"><strong>Charles Darwin (1859):</strong> la clasificación debía reflejar <strong>ascendencia común</strong>, no solo similitud.</li>
+<li class="fragment"><strong>Willi Hennig (1950–60s):</strong> funda la <strong>sistemática filogenética (cladística)</strong> — clasificar según genealogía estricta.</li>
+<li class="fragment"><strong>Últimas 3 décadas:</strong> datos <strong>moleculares</strong> revolucionan la filogenia de invertebrados (p.&nbsp;ej. reorganización de Bilateria).</li>
+</ul>
+</section>
+<section id="por-qué-importa-tanto-en-invertebrados" class="slide level2">
+<h2>¿Por qué importa tanto en invertebrados?</h2>
+<ul>
+<li>Es el grupo animal con <strong>mayor diversidad de planes corporales</strong> (Bauplan).</li>
+<li>Muchos caracteres morfológicos son producto de <strong>convergencia evolutiva</strong> → fácil clasificar mal si solo se usa morfología superficial.</li>
+<li>La sistemática ordena ese universo de formas en un marco <strong>comprobable y predictivo</strong>.</li>
+</ul>
+<div class="caja-clave">
+<p>Sin sistemática rigurosa, términos como “gusano” o “concha” agrupan organismos que <strong>no están emparentados</strong>.</p>
+</div>
+</section></section>
+<section>
+<section id="terminología-esencial" class="title-slide slide level1 center">
+<h1>Terminología esencial</h1>
+
+</section>
+<section id="taxón-y-categoría-taxonómica" class="slide level2">
+<h2>Taxón y categoría taxonómica</h2>
+<div class="caja-termino">
+<p><strong>Taxón</strong> (pl. <em>taxa</em>): unidad o grupo concreto de organismos reconocido formalmente en una clasificación (p.&nbsp;ej. <em>Mollusca</em>, <em>Octopus vulgaris</em>).</p>
+</div>
+<div class="caja-termino">
+<p><strong>Categoría taxonómica (rango)</strong>: el <strong>nivel jerárquico</strong> que ocupa un taxón (p.&nbsp;ej. Filo, Clase, Género).</p>
+</div>
+<div class="fragment">
+<p><em>Mollusca</em> es un <strong>taxón</strong> que ocupa la <strong>categoría</strong> de Filo.</p>
+</div>
+</section>
+<section id="la-jerarquía-linneana" class="slide level2">
+<h2>La jerarquía linneana</h2>
+
+<img data-src="sistematica_invertebrados_files/figure-revealjs/fig-jerarquia-1.png" class="r-stretch quarto-figure-center" id="fig-jerarquia"><p class="caption">
+Figura&nbsp;1: Categorías taxonómicas principales, de mayor a menor inclusividad.
+</p></section>
+<section id="ejemplo-aplicado-el-pulpo-común" class="slide level2">
+<h2>Ejemplo aplicado: el pulpo común</h2>
+
+<img data-src="sistematica_invertebrados_files/figure-revealjs/fig-ejemplo-taxon-1.png" class="r-stretch quarto-figure-center" id="fig-ejemplo-taxon"><p class="caption">
+Figura&nbsp;2: Jerarquía taxonómica completa de Octopus vulgaris.
+</p></section>
+<section id="nomenclatura-binomial" class="slide level2">
+<h2>Nomenclatura binomial</h2>
+<div class="caja-termino">
+<p>Todo <strong>nombre científico de especie</strong> se compone de dos partes en latín (o latinizadas):</p>
+<p><strong>Género</strong> + <strong>epíteto específico</strong>, siempre en <em>cursiva</em>.</p>
+</div>
+<ul>
+<li>Ejemplo: <strong><em>Octopus vulgaris</em></strong> Cuvier, 1797</li>
+<li>El <strong>género</strong> siempre inicia con mayúscula; el epíteto, en minúscula.</li>
+<li>Regida internacionalmente por el <strong>Código Internacional de Nomenclatura Zoológica (ICZN)</strong> para animales.</li>
+</ul>
+<div class="caja-clave">
+<p>El nombre científico evita la ambigüedad de los nombres comunes, que cambian entre regiones e idiomas.</p>
+</div>
+</section>
+<section id="el-concepto-de-especie" class="slide level2">
+<h2>El concepto de especie</h2>
+<p>Existen varios criterios; en zoología de invertebrados suelen combinarse:</p>
+<ul>
+<li class="fragment"><strong>Concepto biológico:</strong> poblaciones que se reproducen entre sí y producen descendencia fértil.</li>
+<li class="fragment"><strong>Concepto morfológico:</strong> diferencias diagnósticas de forma y estructura.</li>
+<li class="fragment"><strong>Concepto filogenético:</strong> el linaje más pequeño diagnosticable con un ancestro común exclusivo.</li>
+</ul>
+<div class="fragment caja-clave">
+<p>En invertebrados, reproducción asexual, especies crípticas y escaso registro conductual hacen que el concepto <strong>filogenético/morfológico</strong> sea frecuentemente el más práctico.</p>
+</div>
+</section></section>
+<section>
+<section id="de-la-clasificación-a-la-filogenia" class="title-slide slide level1 center">
+<h1>De la clasificación a la filogenia</h1>
+
+</section>
+<section id="qué-es-la-filogenia" class="slide level2">
+<h2>¿Qué es la filogenia?</h2>
+<div class="caja-termino">
+<p><strong>Filogenia</strong>: la historia evolutiva de las relaciones de parentesco entre un conjunto de organismos o linajes.</p>
+</div>
+<ul>
+<li>Se representa gráficamente mediante un <strong>árbol filogenético</strong>.</li>
+<li>Es una <strong>hipótesis científica</strong>, contrastable y revisable con nueva evidencia.</li>
+<li>Hoy integra datos morfológicos <strong>y</strong> moleculares (ADN, ARN, genomas completos).</li>
+</ul>
+</section>
+<section id="qué-es-un-árbol-filogenético" class="slide level2">
+<h2>¿Qué es un árbol filogenético?</h2>
+<div class="caja-termino">
+<p>Diagrama ramificado que representa las <strong>hipótesis de parentesco evolutivo</strong> entre taxones, a partir de un ancestro común.</p>
+</div>
+<p>Permite responder preguntas como:</p>
+<ul>
+<li>¿Qué grupos están más emparentados entre sí?</li>
+<li>¿En qué orden aparecieron ciertos caracteres?</li>
+<li>¿Es válida una clasificación tradicional a la luz de la evolución?</li>
+</ul>
+</section>
+<section id="anatomía-de-un-árbol-filogenético" class="slide level2">
+<h2>Anatomía de un árbol filogenético</h2>
+
+<img data-src="sistematica_invertebrados_files/figure-revealjs/fig-anatomia-1.png" class="r-stretch quarto-figure-center" id="fig-anatomia"><p class="caption">
+Figura&nbsp;3: Elementos básicos de un árbol filogenético.
+</p></section>
+<section id="vocabulario-del-árbol" class="slide level2 smaller">
+<h2>Vocabulario del árbol</h2>
+<ul>
+<li class="fragment"><strong>Raíz:</strong> el ancestro común más antiguo representado en el árbol.</li>
+<li class="fragment"><strong>Nodo (interno):</strong> punto de bifurcación → representa un <strong>ancestro hipotético común</strong>.</li>
+<li class="fragment"><strong>Rama (arista):</strong> conecta dos nodos y representa un <strong>linaje</strong> a través del tiempo.</li>
+<li class="fragment"><strong>Punta / hoja / OTU</strong> (<em>Operational Taxonomic Unit</em>): los taxones actuales, en los extremos.</li>
+<li class="fragment"><strong>Clado:</strong> un nodo <strong>y todos</strong> sus descendientes.</li>
+<li class="fragment"><strong>Topología:</strong> el patrón de ramificación — la información de parentesco real del árbol.</li>
+</ul>
+
+<img data-src="sistematica_invertebrados_files/figure-revealjs/fig-anatomia2-1.png" class="r-stretch quarto-figure-center" id="fig-anatomia2"><p class="caption">
+Figura&nbsp;4: Elementos básicos de un árbol filogenético.
+</p></section>
+<section id="un-detalle-clave-para-leer-árboles" class="slide level2">
+<h2>Un detalle clave para leer árboles</h2>
+<div class="caja-clave">
+<p>Un árbol se puede <strong>rotar libremente</strong> en sus nodos sin cambiar su significado: <strong>el orden de las puntas no indica parentesco</strong>, solo la <strong>topología</strong> (los nodos que comparten) lo indica.</p>
+</div>
+
+<img data-src="sistematica_invertebrados_files/figure-revealjs/fig-rotacion-1.png" class="r-stretch quarto-figure-center" id="fig-rotacion"><p class="caption">
+Figura&nbsp;5: Dos representaciones equivalentes del mismo árbol.
+</p></section>
+<section id="grupo-hermano-y-grupo-externo" class="slide level2">
+<h2>Grupo hermano y grupo externo</h2>
+
+<img data-src="sistematica_invertebrados_files/figure-revealjs/fig-outgroup-1.png" class="r-stretch quarto-figure-center" id="fig-outgroup"><p class="caption">
+Figura&nbsp;6: El grupo externo (outgroup) permite enraizar el árbol y polarizar los caracteres.
+</p><ul>
+<li class="fragment"><strong>Grupo interno (<em>ingroup</em>):</strong> el conjunto de taxones que realmente interesa estudiar.</li>
+<li class="fragment"><strong>Grupo externo (<em>outgroup</em>):</strong> un taxón <strong>fuera</strong> del grupo de interés, usado para <strong>enraizar</strong> el árbol.</li>
+<li class="fragment"><strong>Grupos hermanos:</strong> dos linajes que son el pariente más cercano entre sí (comparten un nodo exclusivo).</li>
+</ul>
+</section></section>
+<section>
+<section id="monofilia-parafilia-y-polifilia" class="title-slide slide level1 center">
+<h1>Monofilia, parafilia y polifilia</h1>
+
+</section>
+<section id="por-qué-esta-distinción-es-crucial" class="slide level2">
+<h2>Por qué esta distinción es crucial</h2>
+<div class="caja-clave">
+<p>La sistemática filogenética moderna solo acepta como grupos válidos (naturales) a los <strong>grupos monofiléticos (clados)</strong>.</p>
+</div>
+<p>Esto tuvo un impacto directo en la zoología de invertebrados:</p>
+<div class="fragment">
+<p><strong>“Invertebrata”</strong> (todos los animales sin columna vertebral) <strong>no es un clado</strong>: es un grupo definido por la <em>ausencia</em> de un carácter, y <strong>excluye</strong> a un grupo de descendientes (los vertebrados) del mismo ancestro común de Animalia.</p>
+</div>
+</section>
+<section id="tres-tipos-de-agrupamiento" class="slide level2">
+<h2>Tres tipos de agrupamiento</h2>
+
+<img data-src="sistematica_invertebrados_files/figure-revealjs/fig-mono-para-poli-1.png" class="r-stretch quarto-figure-center" id="fig-mono-para-poli"><p class="caption">
+Figura&nbsp;7: Comparación entre grupo monofilético, parafilético y polifilético.
+</p></section>
+<section id="definiciones-precisas" class="slide level2 smaller">
+<h2>Definiciones precisas</h2>
+<div class="caja-termino">
+<p><strong>Monofilético (clado):</strong> un ancestro común <strong>+ TODOS</strong> sus descendientes. ✔ Grupo natural válido.</p>
+</div>
+<div class="caja-termino">
+<p><strong>Parafilético:</strong> un ancestro común + <strong>algunos</strong> de sus descendientes (excluye a uno o más subgrupos). Ejemplo: <em>“Invertebrata”</em>, <em>“Reptilia”</em> clásica (excluye a las aves).</p>
+</div>
+<div class="caja-termino">
+<p><strong>Polifilético:</strong> grupo que <strong>no incluye</strong> al ancestro común más reciente de todos sus miembros; suele basarse en similitud por <strong>convergencia</strong>, no por parentesco real.</p>
+</div>
+</section></section>
+<section>
+<section id="homología-caracteres-y-construcción-de-árboles" class="title-slide slide level1 center">
+<h1>Homología, caracteres y construcción de árboles</h1>
+
+</section>
+<section id="homología-vs.-analogía" class="slide level2">
+<h2>Homología vs.&nbsp;analogía</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="caja-termino" style="height:220px;">
+<p><strong>Homología</strong></p>
+<p>Semejanza por <strong>ascendencia común</strong>. Ej.: el plan corporal segmentado de anélidos y artrópodos (con matices).</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="caja-termino" style="height:220px;">
+<p><strong>Analogía (convergencia)</strong></p>
+<p>Semejanza por <strong>función similar</strong>, sin ancestro común reciente. Ej.: los ojos tipo cámara del pulpo y de los vertebrados.</p>
+</div>
+</div></div>
+<div class="fragment caja-clave">
+<p>Solo la <strong>homología</strong> aporta información válida para reconstruir filogenias.</p>
+</div>
+</section>
+<section id="tipos-de-caracteres-homólogos" class="slide level2">
+<h2>Tipos de caracteres homólogos</h2>
+<ul>
+<li class="fragment"><strong>Plesiomorfía:</strong> estado <strong>ancestral</strong> de un carácter (compartido con el grupo externo).</li>
+<li class="fragment"><strong>Apomorfía:</strong> estado <strong>derivado</strong> (nuevo) de un carácter.</li>
+<li class="fragment"><strong>Sinapomorfía:</strong> apomorfía <strong>compartida</strong> por dos o más taxones → evidencia de que forman un clado.</li>
+<li class="fragment"><strong>Autapomorfía:</strong> apomorfía exclusiva de <strong>un solo</strong> taxón (útil para diagnosticarlo, no para agrupar).</li>
+</ul>
+</section>
+<section id="mapeo-de-caracteres-en-el-árbol" class="slide level2">
+<h2>Mapeo de caracteres en el árbol</h2>
+
+<img data-src="sistematica_invertebrados_files/figure-revealjs/fig-caracteres-1.png" class="r-stretch quarto-figure-center" id="fig-caracteres"><p class="caption">
+Figura&nbsp;8: Las sinapomorfías (cuadros) marcan el origen de clados; la autapomorfía (rombo) es exclusiva de una punta.
+</p></section>
+<section id="cómo-se-construyen-los-árboles" class="slide level2">
+<h2>¿Cómo se construyen los árboles?</h2>
+<ul>
+<li class="fragment"><strong>Datos morfológicos:</strong> caracteres anatómicos, del desarrollo, ultraestructurales.</li>
+<li class="fragment"><strong>Datos moleculares:</strong> secuencias de ADN/ARN (p.&nbsp;ej. 18S rRNA, COI — <em>código de barras genético</em>).</li>
+<li class="fragment"><strong>Métodos de inferencia:</strong>
+<ul>
+<li class="fragment"><strong>Parsimonia</strong> (cladística clásica): el árbol que exige el <strong>menor número de cambios</strong>.</li>
+<li class="fragment"><strong>Máxima verosimilitud (Maximum Likelihood)</strong>.</li>
+<li class="fragment"><strong>Inferencia bayesiana</strong>.</li>
+</ul></li>
+</ul>
+<div class="fragment caja-clave">
+<p>Hoy la práctica más robusta combina evidencia <strong>morfológica + molecular</strong>: la llamada <strong>taxonomía integrativa</strong>.</p>
+</div>
+</section>
+<section id="genes-homólogos-parálogos-y-ortólogos" class="slide level2">
+<h2>Genes homólogos, parálogos y ortólogos</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://commons.wikimedia.org/wiki/File:Ortholog_paralog_analog_examples-ES.svg"><img data-src="https://upload.wikimedia.org/wikipedia/commons/3/32/Ortholog_paralog_analog_examples-ES.svg" class="quarto-figure quarto-figure-center" alt="Genes homólogos, parálogos y ortólogos"></a></p>
+</figure>
+</div>
+<figcaption>Genes homólogos, parálogos y ortólogos</figcaption>
+</figure>
+</div>
+</section></section>
+<section>
+<section id="la-filogenia-transformó-la-clasificación-de-invertebrados" class="title-slide slide level1 center">
+<h1>La filogenia transformó la clasificación de invertebrados</h1>
+
+</section>
+<section id="la-revolución-molecular-en-bilateria" class="slide level2">
+<h2>La revolución molecular en Bilateria</h2>
+<p>Los datos moleculares (fines de los 90) reorganizaron por completo el árbol de los animales bilaterales:</p>
+
+<img data-src="sistematica_invertebrados_files/figure-revealjs/fig-bilateria-1.png" class="r-stretch quarto-figure-center" id="fig-bilateria"><p class="caption">
+Figura&nbsp;9: Filogenia simplificada de los principales linajes animales (basada en evidencia molecular).
+</p></section>
+<section id="lo-que-este-árbol-cambió" class="slide level2 smaller">
+<h2>Lo que este árbol cambió</h2>
+<ul>
+<li class="fragment">Se abandona el criterio antiguo (celoma, segmentación) como único ordenador y se reconocen <strong>tres grandes clados</strong> dentro de Protostomia y Deuterostomia:
+<ul>
+<li class="fragment"><strong>Ecdysozoa:</strong> animales que <strong>mudan una cutícula</strong> (Artrópodos, Nematodos, entre otros).</li>
+<li class="fragment"><strong>Lophotrochozoa:</strong> incluye moluscos, anélidos, platelmintos, entre otros — unidos por evidencia molecular más que morfológica evidente.</li>
+<li class="fragment"><strong>Deuterostomia:</strong> equinodermos, cordados y grupos afines.</li>
+</ul></li>
+<li class="fragment"><strong>Artrópodos y nematodos</strong>, muy distintos morfológicamente, resultaron <strong>más emparentados entre sí</strong> que con anélidos (antes agrupados por tener celoma/segmentación).</li>
+<li class="fragment">Esto demuestra el poder — y la necesidad — del enfoque filogenético frente a la sola similitud morfológica.</li>
+</ul>
+
+<img data-src="sistematica_invertebrados_files/figure-revealjs/fig-bilateria2-1.png" class="r-stretch quarto-figure-center" id="fig-bilateria2"><p class="caption">
+Figura&nbsp;10: Filogenia simplificada de los principales linajes animales (basada en evidencia molecular).
+</p></section></section>
+<section>
+<section id="relevancia-del-enfoque-filogenético" class="title-slide slide level1 center">
+<h1>Relevancia del enfoque filogenético</h1>
+
+</section>
+<section id="por-qué-es-indispensable-en-invertebrados" class="slide level2">
+<h2>¿Por qué es indispensable en invertebrados?</h2>
+<ul>
+<li class="fragment"><strong>Orienta la taxonomía:</strong> permite proponer clasificaciones que reflejan la evolución real, no solo similitud superficial.</li>
+<li class="fragment"><strong>Detecta especies crípticas:</strong> organismos morfológicamente idénticos pero genéticamente distintos (frecuente en invertebrados).</li>
+<li class="fragment"><strong>Guía la conservación:</strong> prioriza linajes evolutivos únicos, no solo especies aisladas.</li>
+<li class="fragment"><strong>Permite reconstruir la evolución de caracteres:</strong> ¿cuándo apareció la metamería? ¿cuántas veces evolucionó el parasitismo?</li>
+<li class="fragment"><strong>Sustenta la biogeografía histórica:</strong> de dónde y cómo se dispersaron los linajes.</li>
+<li class="fragment"><strong>Es la base del <em>DNA barcoding</em></strong> para identificación rápida de especies (uso de COI, 18S).</li>
+</ul>
+</section>
+<section id="ejemplo-de-aplicación-práctica" class="slide level2">
+<h2>Ejemplo de aplicación práctica</h2>
+<div class="caja-clave">
+<p>Estudios filogenéticos moleculares han revelado que muchas “especies” morfológicamente uniformes de invertebrados marinos y de agua dulce son en realidad <strong>complejos de especies crípticas</strong>, con implicancias directas para la conservación y el manejo pesquero.</p>
+</div>
+<ul>
+<li>La filogenia permite delimitar unidades evolutivas reales para la toma de decisiones.</li>
+<li>Sin este marco, se podrían subestimar — o sobrestimar — los niveles reales de biodiversidad.</li>
+</ul>
+</section></section>
+<section>
+<section id="síntesis" class="title-slide slide level1 center">
+<h1>Síntesis</h1>
+
+</section>
+<section id="ideas-clave-de-la-clase" class="slide level2 smaller">
+<h2>Ideas clave de la clase</h2>
+<ol type="1">
+<li class="fragment">La <strong>sistemática</strong> estudia el parentesco evolutivo; la <strong>taxonomía</strong> describe y nombra.</li>
+<li class="fragment">La <strong>nomenclatura binomial</strong> y el ICZN estandarizan los nombres científicos.</li>
+<li class="fragment">Un <strong>árbol filogenético</strong> es una hipótesis de parentesco, con raíz, nodos, ramas, puntas y clados.</li>
+<li class="fragment">Solo los grupos <strong>monofiléticos</strong> son taxonómicamente válidos bajo el enfoque filogenético moderno.</li>
+<li class="fragment">La distinción entre homología y analogía es esencial para no confundir evidencia evolutiva real.</li>
+<li class="fragment">Los datos moleculares <strong>reorganizaron radicalmente</strong> la clasificación de los invertebrados (Ecdysozoa / Lophotrochozoa). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2614232/" class="uri">https://pmc.ncbi.nlm.nih.gov/articles/PMC2614232/</a></li>
+<li class="fragment">La filogenia es hoy <strong>indispensable</strong> para la taxonomía, la conservación y el estudio evolutivo de los invertebrados.</li>
+</ol>
+</section>
+<section id="gracias" class="slide level2 center" data-background-color="#0B4F6C">
+<h2>¡Gracias!</h2>
+<div style="color:white; text-align:center; font-size:1.2em;">
+<p>Preguntas y discusión</p>
+</div>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Sistemática y Filogenia — Invertebrados</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="sistematica_invertebrados_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="sistematica_invertebrados_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="sistematica_invertebrados_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="sistematica_invertebrados_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="sistematica_invertebrados_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="sistematica_invertebrados_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="sistematica_invertebrados_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="sistematica_invertebrados_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="sistematica_invertebrados_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="sistematica_invertebrados_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="sistematica_invertebrados_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiado");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiado");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
